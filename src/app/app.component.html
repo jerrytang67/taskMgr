@@ -1,13 +1,69 @@
-<div class="site">
-  <header>
-    <app-header></app-header>
-  </header>
-  <main>
-    
-  </main>
-  <footer>
-    <app-footer>
+<mat-sidenav-container (backdropClick)="close('backdrop')">
+  <mat-sidenav #sidenav
+               (keydown.escape)="close('escape')"
+               disableClose>
+    <p><button mat-button
+              (click)="close('toggle button')">关闭</button></p>
+  </mat-sidenav>
 
-    </app-footer>
-  </footer>
-</div>
+  <mat-sidenav-content>
+    <div class="site">
+      <header>
+        <app-header></app-header>
+      </header>
+      <main>
+        <p><button mat-button
+                  color="primary"
+                  (click)="sidenav.open()">打开侧边栏</button></p>
+        <p>Closed due to: {{reason}}</p>
+
+        <h3>Basic Buttons</h3>
+        <div class="example-button-row">
+          <button mat-button>Basic</button>
+          <button mat-button color="primary">Primary</button>
+          <button mat-button color="accent">Accent</button>
+          <button mat-button color="warn">Warn</button>
+          <button mat-button disabled>Disabled</button>
+          <a mat-button routerLink=".">Link</a>
+        </div>
+        
+        <h3>Raised Buttons</h3>
+        <div class="example-button-row">
+          <button mat-raised-button>Basic</button>
+          <button mat-raised-button color="primary">Primary</button>
+          <button mat-raised-button color="accent">Accent</button>
+          <button mat-raised-button color="warn">Warn</button>
+          <button mat-raised-button disabled>Disabled</button>
+          <a mat-raised-button routerLink=".">Link</a>
+        </div>
+        
+        <h3>Stroked Buttons</h3>
+        <div class="example-button-row">
+          <button mat-stroked-button>Basic</button>
+          <button mat-stroked-button color="primary">Primary</button>
+          <button mat-stroked-button color="accent">Accent</button>
+          <button mat-stroked-button color="warn">Warn</button>
+          <button mat-stroked-button disabled>Disabled</button>
+          <a mat-stroked-button routerLink=".">Link</a>
+        </div>
+        
+        <h3>Flat Buttons</h3>
+        <div class="example-button-row">
+          <button mat-flat-button>Basic</button>
+          <button mat-flat-button color="primary">Primary</button>
+          <button mat-flat-button color="accent">Accent</button>
+          <button mat-flat-button color="warn">Warn</button>
+          <button mat-flat-button disabled>Disabled</button>
+          <a mat-flat-button routerLink=".">Link</a>
+        </div>
+        
+      </main>
+      <footer>
+        <app-footer>
+
+        </app-footer>
+      </footer>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
