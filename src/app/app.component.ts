@@ -10,7 +10,6 @@ export class AppComponent {
   @ViewChild('sidenav', { static: false }) sidenav: MatSidenav;
   title = 'taskMgr';
 
-
   reason = '';
 
   close(reason: string) {

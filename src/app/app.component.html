@@ -9,12 +9,9 @@
   <mat-sidenav-content>
     <div class="site">
       <header>
-        <app-header></app-header>
+        <app-header (toggle)="sidenav.open()"></app-header>
       </header>
       <main>
-        <p><button mat-button
-                  color="primary"
-                  (click)="sidenav.open()">打开侧边栏</button></p>
         <p>Closed due to: {{reason}}</p>
 
         <h3>Basic Buttons</h3>
