@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material';
 
 
 
@@ -20,7 +21,9 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    // { provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: { float: 'always' } }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
