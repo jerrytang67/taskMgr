@@ -1,11 +1,10 @@
 <form class="example-form">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>登录</mat-card-title>
+      <mat-card-title>登录 </mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field hintLabel="必填项" class="example-full-width">
-        <!-- <mat-label>TT</mat-label>  -->
         <input matInput placeholder="您的帐号">
         <!-- <span matSuffix>@gmail.com</span> -->
       </mat-form-field>
@@ -13,11 +12,11 @@
         <input matInput type="password" placeholder="您的密码">
       </mat-form-field>
       <div>
-        <button mat-raised-button type="button">登录</button>
+        <button mat-raised-button type="button" (click)="onClick()">登录</button>
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <p>还没有帐户?
+      <p>还没有帐户? {{ (count$ | async).home }}
         <a [routerLink]="[ '/login/register' ]">注册</a>
       </p>
       <p>忘记密码?<a href="">找回</a></p>

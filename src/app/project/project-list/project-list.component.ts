@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { NewProjectComponent } from '../new-project/new-project.component';
 
 export interface Project {
   name: string,
@@ -16,8 +18,8 @@ export class ProjectListComponent implements OnInit {
 
   projects: Project[] = [
     {
-      name: "111",
-      desc: "内部项目",
+      name: "自动化测试项目",
+      desc: "这里一个企业内部项目",
       coverImg: "assets/images/covers/1.jpg"
     },
     {
@@ -48,11 +50,17 @@ export class ProjectListComponent implements OnInit {
   ]
 
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
-  }
-  onClick() {
 
   }
+
+  openNewProjectDialog() {
+    const dialogRef = this.dialog.open(NewProjectComponent, { data: 'this is my data' })
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+    })
+  }
+
 }

@@ -5,9 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreModule } from '@ngrx/store';
+import { AppStoreModule } from 'src/store';
+import { environment } from 'src/environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SharedModule } from './shared/shared.module';
-import { MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material';
-
 
 
 @NgModule({
@@ -19,7 +21,13 @@ import { MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material';
     SharedModule,
     AppRoutingModule,
     CoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({}),
+    AppStoreModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
   ],
   providers: [
     // { provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: { float: 'always' } }

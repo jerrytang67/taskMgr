@@ -1,0 +1,15 @@
+<form>
+  <h2 mat-dialog-title>New Project</h2>
+  <div mat-dialog-content>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="name" [(ngModel)]="name" name="name">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="desc" [(ngModel)]="desc" name="desc">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button type="button" color="primary" (click)="onSave()">Save</button>
+    <button mat-raised-button type="button" mat-dialog-close>Close</button>
+  </div>
+</form>

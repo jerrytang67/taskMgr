@@ -6,8 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material';
-import { MatCardModule, MatListModule , MatGridListModule } from '@angular/material';
+import { MatCardModule, MatListModule, MatGridListModule, MatDialogModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 const MAT_MODULE = [
   MatSidenavModule,
@@ -17,11 +18,12 @@ const MAT_MODULE = [
   MatInputModule,
   MatCardModule,
   MatListModule,
-  MatGridListModule
+  MatGridListModule,
+  MatDialogModule
 ]
 @NgModule({
   declarations: [],
-  imports: [CommonModule, HttpClientModule, ...MAT_MODULE],
-  exports: [CommonModule, HttpClientModule, ...MAT_MODULE]
+  imports: [CommonModule, FormsModule, HttpClientModule, ...MAT_MODULE],
+  exports: [CommonModule, FormsModule, HttpClientModule, ...MAT_MODULE]
 })
 export class SharedModule { }
