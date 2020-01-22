@@ -1,6 +1,4 @@
 <form class="example-form">
-
-
   <mat-card>
     <mat-card-header>
       <mat-card-title>登录</mat-card-title>
@@ -19,7 +17,9 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <p>还没有帐户?<a href="">注册</a></p>
+      <p>还没有帐户?
+        <a [routerLink]="[ '/login/register' ]">注册</a>
+      </p>
       <p>忘记密码?<a href="">找回</a></p>
     </mat-card-actions>
   </mat-card>
