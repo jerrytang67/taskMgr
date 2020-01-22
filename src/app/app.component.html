@@ -1,11 +1,8 @@
 <mat-sidenav-container (backdropClick)="close('backdrop')">
-  <mat-sidenav #sidenav
-               (keydown.escape)="close('escape')"
-               disableClose>
-    <p><button mat-button
-              (click)="close('toggle button')">关闭</button></p>
+  <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+    <app-sidebar></app-sidebar>
+    <p><button mat-button (click)="close('toggle button')">关闭</button></p>
   </mat-sidenav>
-
   <mat-sidenav-content>
     <div class="site">
       <header>
@@ -16,10 +13,8 @@
       </main>
       <footer>
         <app-footer>
-
         </app-footer>
       </footer>
     </div>
-
   </mat-sidenav-content>
 </mat-sidenav-container>
