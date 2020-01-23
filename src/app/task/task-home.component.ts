@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { MoveTaskComponent } from './move-task.component';
 
 @Component({
   selector: 'app-task-home',
   template: `
 <div class="task-lists">
   <app-task-list *ngFor="let item of lists" class="list-container">
-    <app-task-header (newTask)="openNewTaskDialog(item)">{{item.name}}</app-task-header>
+    <app-task-header 
+    (moveTask)="openMoveTaskDialog(item)"
+    (newTask)="openNewTaskDialog(item)">{{item.name}}</app-task-header>
     <app-task-item *ngFor="let item of item.tasks" [item]="item"></app-task-item>
   </app-task-list>
 </div>
@@ -108,7 +111,11 @@ export class TaskHomeComponent implements OnInit {
   }
 
   openNewTaskDialog(list) {
-    const dialogRef = this.dialog.open(NewTaskComponent, { data: 'this is my data' })
+    this.dialog.open(NewTaskComponent, { data: 'this is my data' })
+  }
+
+  openMoveTaskDialog(list) {
+    const dialogRef = this.dialog.open(MoveTaskComponent, { data: this.lists })
     dialogRef.afterClosed().subscribe(res => {
       console.log(res);
     })

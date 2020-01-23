@@ -16,15 +16,9 @@ import { Component, OnInit, Input } from '@angular/core';
   (click)="onCheckboxClick($event)"
   (change)="checkboxChanged()">
 </mat-checkbox>
-  <div 
-  mat-line 
-  [matTooltip]="item.desc"
-  class="content" 
-  [ngClass]="{'completed': item.completed}">
-    {{item.desc}}
-  </div>
+  <div mat-line [matTooltip]="item.desc" class="content" [ngClass]="{'completed': item.completed}">{{item.desc}}</div>
   <div mat-line class="bottom-bar">
-    <span class="duedate" *ngIf="item.dueDate">{{item.dueDate | date:"yy-MM-dd"}}</span>
+    <span class="duedate" *ngIf="item.dueDate">{{item.dueDate | date:"yyyy-MM-dd"}}</span>
     <mat-icon *ngIf="item.reminder" class="alarm">alarm</mat-icon>
   </div>
   <mat-icon [svgIcon]="item.owner.avatar"  md-list-avatar class="avatar"></mat-icon>
@@ -39,6 +33,13 @@ mat-icon.avatar {
   border-radius: 50%;
   background-color:#FFDB00;
   order: 3;
+}
+
+.mat-list-text{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  height:100%;
 }
 
 .completed {

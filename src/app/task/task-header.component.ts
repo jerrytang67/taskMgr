@@ -26,7 +26,7 @@ import { NewTaskComponent } from './new-task/new-task.component';
         <mat-icon>mode_edit</mat-icon>
         <span>修改列表名称</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="onMoveTaskClick()">
         <mat-icon>move_to_inbox</mat-icon>
         <span>移动列表所有内容</span>
       </button>
@@ -56,6 +56,7 @@ import { NewTaskComponent } from './new-task/new-task.component';
 export class TaskHeaderComponent implements OnInit {
 
   @Output() newTask = new EventEmitter<void>();
+  @Output() moveTask = new EventEmitter<void>();
 
   constructor(private dialog: MatDialog) { }
 
@@ -63,9 +64,10 @@ export class TaskHeaderComponent implements OnInit {
   }
 
   onNewTaskClick() {
-
     this.newTask.emit();
+  }
 
-
+  onMoveTaskClick(){
+    this.moveTask.emit();
   }
 }

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +30,7 @@ import { SharedModule } from './shared/shared.module';
     }),
   ],
   providers: [
+    // { provide: LOCALE_ID, useValue: 'zh-cn' } 
     // { provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: { float: 'always' } }
   ],
   bootstrap: [AppComponent]
