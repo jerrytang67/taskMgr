@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material';
-import { MatCardModule, MatListModule, MatGridListModule, MatDialogModule } from '@angular/material';
+import { MatCardModule, MatListModule, MatGridListModule, MatDialogModule, MatAutocompleteModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
@@ -19,7 +19,8 @@ const MAT_MODULE = [
   MatCardModule,
   MatListModule,
   MatGridListModule,
-  MatDialogModule
+  MatDialogModule,
+  MatAutocompleteModule
 ]
 @NgModule({
   declarations: [],

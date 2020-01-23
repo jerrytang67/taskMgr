@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Project } from '../project-list/project-list.component';
 
 @Component({
@@ -8,12 +8,15 @@ import { Project } from '../project-list/project-list.component';
 })
 export class ProjectItemComponent implements OnInit {
   @Input() item: Project;
+  @Output() onInvite = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit() {
     console.log(this.item);
-
   }
 
+  onInviteClick() {
+    this.onInvite.emit();
+  }
 }
