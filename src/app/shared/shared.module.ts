@@ -5,7 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule, MatMenuModule } from '@angular/material';
+import { MatInputModule, MatMenuModule, MatCheckboxModule, MatSelectModule, MatTooltipModule, MatRadioModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { MatCardModule, MatListModule, MatGridListModule, MatDialogModule, MatAutocompleteModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,7 +21,14 @@ const MAT_MODULE = [
   MatGridListModule,
   MatDialogModule,
   MatAutocompleteModule,
-  MatMenuModule
+  MatMenuModule,
+  MatCheckboxModule,
+  MatSelectModule,
+  MatTooltipModule,
+  MatRadioModule,
+  //MaterialModule,            // <----- this module will be deprecated in the future version.
+  MatDatepickerModule,        // <----- import(must)
+  MatNativeDateModule,        // <----- import for date formating(optional)
 ]
 @NgModule({
   declarations: [],

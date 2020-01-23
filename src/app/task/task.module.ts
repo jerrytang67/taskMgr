@@ -5,6 +5,7 @@ import { TaskListComponent } from './task-list.component';
 import { TaskItemComponent } from './task-item.component';
 import { TaskHeaderComponent } from './task-header.component';
 import { TaskRoutingModule } from './task-routing.module';
+import { NewTaskComponent } from './new-task/new-task.component';
 
 
 
@@ -13,11 +14,13 @@ import { TaskRoutingModule } from './task-routing.module';
     TaskHomeComponent,
     TaskListComponent,
     TaskItemComponent,
-    TaskHeaderComponent
+    TaskHeaderComponent,
+    NewTaskComponent
   ],
   imports: [
     SharedModule,
     TaskRoutingModule
-  ]
+  ],
+  entryComponents: [NewTaskComponent]
 })
 export class TaskModule { }

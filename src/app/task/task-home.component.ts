@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { NewTaskComponent } from './new-task/new-task.component';
 
 @Component({
   selector: 'app-task-home',
   template: `
 <div class="task-lists">
   <app-task-list *ngFor="let item of lists" class="list-container">
-    <app-task-header>{{item.name}}</app-task-header>
-    <app-task-item *ngFor="let item of item.tasks"></app-task-item>
+    <app-task-header (newTask)="openNewTaskDialog(item)">{{item.name}}</app-task-header>
+    <app-task-item *ngFor="let item of item.tasks" [item]="item"></app-task-item>
   </app-task-list>
 </div>
 <button mat-fab (click)="openNewTaskDialog()">
@@ -45,6 +46,8 @@ export class TaskHomeComponent implements OnInit {
       {
         id: 1,
         desc: '任务一:去星巴克买杯咖啡',
+        completed: true,
+        priority: 3,
         owner: {
           id: 1,
           name: '张三',
@@ -55,6 +58,8 @@ export class TaskHomeComponent implements OnInit {
       {
         id: 2,
         desc: '任务二:完成老板布置的PPT作业',
+        completed: false,
+        priority: 2,
         owner: {
           id: 2,
           name: '李四',
@@ -70,6 +75,8 @@ export class TaskHomeComponent implements OnInit {
       {
         id: 3,
         desc: '任务三:去星巴克买杯咖啡',
+        completed: false,
+        priority: 2,
         owner: {
           id: 1,
           name: '张三',
@@ -79,7 +86,9 @@ export class TaskHomeComponent implements OnInit {
       },
       {
         id: 4,
-        desc: '任务四:完成老板布置的PPT作业',
+        desc: '任务四:完成老板布置的PPT作业完成老板布置的PPT作业',
+        completed: false,
+        priority: 1,
         owner: {
           id: 2,
           name: '李四',
@@ -98,12 +107,11 @@ export class TaskHomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  openNewTaskDialog(project) {
-    // console.log(project);
-    // const dialogRef = this.dialog.open(null)
-    // dialogRef.afterClosed().subscribe(res => {
-    //   console.log(res);
-    // })
+  openNewTaskDialog(list) {
+    const dialogRef = this.dialog.open(NewTaskComponent, { data: 'this is my data' })
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+    })
   }
 
 }
