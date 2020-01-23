@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginRoutingModule } from './login/login-routing.module';
 
 
 const routes: Routes = [
@@ -10,6 +9,9 @@ const routes: Routes = [
   },
   {
     path: 'project', loadChildren: "./project/project.module#ProjectModule"
+  },
+  {
+    path: 'task', loadChildren: "./task/task.module#TaskModule"
   }
 ];
 

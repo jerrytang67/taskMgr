@@ -5,10 +5,10 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material';
+import { MatInputModule, MatMenuModule } from '@angular/material';
 import { MatCardModule, MatListModule, MatGridListModule, MatDialogModule, MatAutocompleteModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const MAT_MODULE = [
   MatSidenavModule,
@@ -20,11 +20,12 @@ const MAT_MODULE = [
   MatListModule,
   MatGridListModule,
   MatDialogModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatMenuModule
 ]
 @NgModule({
   declarations: [],
-  imports: [CommonModule, FormsModule, HttpClientModule, ...MAT_MODULE],
-  exports: [CommonModule, FormsModule, HttpClientModule, ...MAT_MODULE]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, ...MAT_MODULE],
+  exports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, ...MAT_MODULE]
 })
 export class SharedModule { }
