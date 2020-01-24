@@ -11,6 +11,7 @@ import { cardAnimation } from 'src/animations/card.animation';
 export class ProjectItemComponent implements OnInit {
   @Input() item: Project;
   @Output() onInvite = new EventEmitter<void>();
+  @Output() onDelete = new EventEmitter<void>();
 
   @HostBinding('@card') cardState = 'out';
 
@@ -33,5 +34,10 @@ export class ProjectItemComponent implements OnInit {
 
   onInviteClick() {
     this.onInvite.emit();
+  }
+
+  onDeleteClick()
+  {
+    this.onDelete.emit();
   }
 }

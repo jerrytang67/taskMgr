@@ -10,6 +10,8 @@ import { MatCardModule, MatListModule, MatGridListModule, MatDialogModule, MatAu
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { DragDropModule } from '@angular/cdk/drag-drop'
+
 const MAT_MODULE = [
   MatSidenavModule,
   MatToolbarModule,
@@ -30,9 +32,13 @@ const MAT_MODULE = [
   MatDatepickerModule,        // <----- import(must)
   MatNativeDateModule,        // <----- import for date formating(optional)
 ]
+
+const CDK_MODULE = [
+  DragDropModule
+]
 @NgModule({
   declarations: [],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, ...MAT_MODULE],
-  exports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, ...MAT_MODULE]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, ...MAT_MODULE, ...CDK_MODULE],
+  exports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, ...MAT_MODULE, ...CDK_MODULE]
 })
 export class SharedModule { }

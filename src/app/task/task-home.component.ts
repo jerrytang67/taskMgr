@@ -9,20 +9,18 @@ import { slideToRight } from 'src/animations/router.animation';
   selector: 'app-task-home',
   template: `
 <div class="task-lists">
-  <app-task-list *ngFor="let item of lists" class="list-container">
+  <app-task-list *ngFor="let item of lists" class="list-container" cdkDropList>
     <app-task-header 
     (moveTask)="openMoveTaskDialog(item)"
     (newTask)="openNewTaskDialog(item)"
     (renameTask)="openRenameTaskDialog(item)"
-    
     >{{item.name}}</app-task-header>
-    <app-task-item *ngFor="let item of item.tasks" [item]="item"></app-task-item>
+      <app-task-item *ngFor="let item of item.tasks" [item]="item" ></app-task-item>
   </app-task-list>
 </div>
 <button mat-fab (click)="openNewTaskDialog()">
   <mat-icon>add</mat-icon>
 </button>
-1
   `,
   styles: [`
 .mat-fab {
@@ -108,7 +106,7 @@ export class TaskHomeComponent implements OnInit {
   }
   ];
 
-  @HostBinding('@routeAnim') state;
+  // @HostBinding('@routeAnim') state;
 
 
   constructor(private dialog: MatDialog) { }

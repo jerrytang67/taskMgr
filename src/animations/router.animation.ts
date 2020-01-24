@@ -1,8 +1,8 @@
 import { trigger, state, style, animate, transition, group } from "@angular/animations";
 
 export const slideToRight = trigger('routeAnim', [
-    state('void', style({ 'position': 'fixed', 'width': '100%', 'height': '100%' })),
-    state('*', style({ 'position': 'fixed', 'width': '100%', 'height': '80%' })),
+    state('void', style({ 'position': 'fixed' })),
+    state('*', style({ 'position': 'fixed'})),
     transition(':enter', [
         style({ transform: 'translateX(-100%)', opacity: 0 }),
         group([

@@ -10,7 +10,8 @@ import { taskItemAnimation } from 'src/animations/taskItem.animation';
     'priority-normal': item.priority === 3,
     'priority-important': item.priority === 2,
     'priority-emergency': item.priority === 1}"
-  [@taskItem]="_hover"  
+  [@taskItem]="_hover"
+  cdkDrag
  >
   <mat-checkbox
   class="status"
@@ -35,6 +36,12 @@ mat-icon.avatar {
   border-radius: 50%;
   background-color:#FFDB00;
   order: 3;
+}
+.example-custom-placeholder {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 60px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 .mat-list-text{
