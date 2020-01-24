@@ -22,7 +22,7 @@ import { NewTaskComponent } from './new-task/new-task.component';
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="onRenameTaskClick()">
         <mat-icon>mode_edit</mat-icon>
         <span>修改列表名称</span>
       </button>
@@ -57,6 +57,7 @@ export class TaskHeaderComponent implements OnInit {
 
   @Output() newTask = new EventEmitter<void>();
   @Output() moveTask = new EventEmitter<void>();
+  @Output() renameTask = new EventEmitter<void>();
 
   constructor(private dialog: MatDialog) { }
 
@@ -67,7 +68,11 @@ export class TaskHeaderComponent implements OnInit {
     this.newTask.emit();
   }
 
-  onMoveTaskClick(){
+  onMoveTaskClick() {
     this.moveTask.emit();
+  }
+
+  onRenameTaskClick() {
+    this.renameTask.emit();
   }
 }

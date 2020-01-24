@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { taskItemAnimation } from 'src/animations/taskItem.animation';
 
 @Component({
   selector: 'app-task-item',
@@ -9,6 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
     'priority-normal': item.priority === 3,
     'priority-important': item.priority === 2,
     'priority-emergency': item.priority === 1}"
+  [@taskItem]="_hover"  
  >
   <mat-checkbox
   class="status"
@@ -106,11 +108,14 @@ mat-icon.avatar {
   width: 100%;
 }
 
-  `]
+  `],
+  animations: [taskItemAnimation]
 })
 export class TaskItemComponent implements OnInit {
 
   @Input() item: any;
+
+  _hover = 'out';
 
   constructor() { }
 
@@ -124,4 +129,15 @@ export class TaskItemComponent implements OnInit {
   checkboxChanged() {
 
   }
+
+  @HostListener("mouseenter")
+  onMouseEnter() {
+    this._hover = 'in'
+  }
+  @HostListener("mouseleave")
+  onMouseLeave() {
+    this._hover = 'out'
+  }
+
+
 }

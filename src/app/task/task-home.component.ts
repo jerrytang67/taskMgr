@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { MoveTaskComponent } from './move-task.component';
+import { RenameTaskComponent } from './rename-task.component';
+import { slideToRight } from 'src/animations/router.animation';
 
 @Component({
   selector: 'app-task-home',
@@ -10,7 +12,10 @@ import { MoveTaskComponent } from './move-task.component';
   <app-task-list *ngFor="let item of lists" class="list-container">
     <app-task-header 
     (moveTask)="openMoveTaskDialog(item)"
-    (newTask)="openNewTaskDialog(item)">{{item.name}}</app-task-header>
+    (newTask)="openNewTaskDialog(item)"
+    (renameTask)="openRenameTaskDialog(item)"
+    
+    >{{item.name}}</app-task-header>
     <app-task-item *ngFor="let item of item.tasks" [item]="item"></app-task-item>
   </app-task-list>
 </div>
@@ -39,7 +44,8 @@ import { MoveTaskComponent } from './move-task.component';
   overflow-y:scroll;
   overflow-x:hidden;
 }
-  `]
+  `],
+  animations: [slideToRight]
 })
 export class TaskHomeComponent implements OnInit {
   lists: any[] = [{
@@ -100,10 +106,10 @@ export class TaskHomeComponent implements OnInit {
         dueDate: new Date()
       }]
   }
-
-
-
   ];
+
+  @HostBinding('@routeAnim') state;
+
 
   constructor(private dialog: MatDialog) { }
 
@@ -116,6 +122,13 @@ export class TaskHomeComponent implements OnInit {
 
   openMoveTaskDialog(list) {
     const dialogRef = this.dialog.open(MoveTaskComponent, { data: this.lists })
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+    })
+  }
+
+  openRenameTaskDialog(list) {
+    const dialogRef = this.dialog.open(RenameTaskComponent, { data: this.lists })
     dialogRef.afterClosed().subscribe(res => {
       console.log(res);
     })

@@ -19,7 +19,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
   </div>
 </form>
   `,
-  styles: []
+  styles: [`
+  `]
 })
 export class MoveTaskComponent implements OnInit {
 

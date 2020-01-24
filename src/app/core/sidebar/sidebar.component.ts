@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, Output, EventEmitter } from '@angular/core';
 
 export interface Section {
   name: string,
@@ -12,6 +12,7 @@ export interface Section {
 })
 
 export class SidebarComponent implements OnInit {
+  @Output() navClick = new EventEmitter<void>();
   constructor() { }
 
   folders: Section[] = [
@@ -41,6 +42,10 @@ export class SidebarComponent implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  onNavClick() {
+    this.navClick.emit();
   }
 
 }

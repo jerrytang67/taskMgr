@@ -1,6 +1,6 @@
 <mat-sidenav-container (backdropClick)="close('backdrop')">
   <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
-    <app-sidebar></app-sidebar>
+    <app-sidebar (navClick)="close('nav click')"></app-sidebar>
     <p><button mat-button (click)="close('toggle button')">关闭</button></p>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { NewProjectComponent } from '../new-project/new-project.component';
 import { InviteComponent } from '../invite/invite.component';
+import { slideToRight } from 'src/animations/router.animation';
 
 export interface Project {
   name: string,
@@ -13,9 +14,12 @@ export interface Project {
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
-  styleUrls: ['./project-list.component.scss']
+  styleUrls: ['./project-list.component.scss'],
+  animations: [slideToRight]
 })
 export class ProjectListComponent implements OnInit {
+
+  @HostBinding('@routeAnim') state;
 
   projects: Project[] = [
     {
@@ -50,11 +54,9 @@ export class ProjectListComponent implements OnInit {
     }
   ]
 
-
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
-
   }
 
   openNewProjectDialog() {

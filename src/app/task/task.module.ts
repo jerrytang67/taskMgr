@@ -7,6 +7,7 @@ import { TaskHeaderComponent } from './task-header.component';
 import { TaskRoutingModule } from './task-routing.module';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { MoveTaskComponent } from './move-task.component';
+import { RenameTaskComponent } from './rename-task.component';
 
 
 
@@ -17,7 +18,8 @@ import { MoveTaskComponent } from './move-task.component';
     TaskItemComponent,
     TaskHeaderComponent,
     NewTaskComponent,
-    MoveTaskComponent
+    MoveTaskComponent,
+    RenameTaskComponent
   ],
   imports: [
     SharedModule,
@@ -25,7 +27,8 @@ import { MoveTaskComponent } from './move-task.component';
   ],
   entryComponents: [
     NewTaskComponent,
-    MoveTaskComponent
+    MoveTaskComponent,
+    RenameTaskComponent
   ]
 })
 export class TaskModule { }
