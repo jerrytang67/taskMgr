@@ -4,18 +4,25 @@ import { NewTaskComponent } from './new-task/new-task.component';
 import { MoveTaskComponent } from './move-task.component';
 import { RenameTaskComponent } from './rename-task.component';
 import { slideToRight } from 'src/animations/router.animation';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-task-home',
   template: `
 <div class="task-lists">
-  <app-task-list *ngFor="let item of lists" class="list-container" cdkDropList>
+  <app-task-list *ngFor="let item of lists; let i=index" class="list-container" >
     <app-task-header 
     (moveTask)="openMoveTaskDialog(item)"
     (newTask)="openNewTaskDialog(item)"
     (renameTask)="openRenameTaskDialog(item)"
     >{{item.name}}</app-task-header>
-      <app-task-item *ngFor="let item of item.tasks" [item]="item" ></app-task-item>
+
+    <div class="task-item-container" cdkDropList [id]="item.desc" 
+    [cdkDropListData]="item.tasks" 
+    [cdkDropListConnectedTo]="listIds" (cdkDropListDropped)="onTaskDrop($event)">
+      <app-task-item *ngFor="let task of item.tasks" [item]="task" cdkDrag [cdkDragData]="task"></app-task-item>
+    </div>
+
   </app-task-list>
 </div>
 <button mat-fab (click)="openNewTaskDialog()">
@@ -28,6 +35,10 @@ import { slideToRight } from 'src/animations/router.animation';
   right: 32px;
   bottom: 96px;
   z-index: 998;
+}
+.task-item-container{
+  min-height:100%;
+  background:#ff0;
 }
 .task-lists{
   min-width:100%;
@@ -46,9 +57,16 @@ import { slideToRight } from 'src/animations/router.animation';
   animations: [slideToRight]
 })
 export class TaskHomeComponent implements OnInit {
+
+  get listIds(): string[] {
+    let result = this.lists.map(track => track.desc);
+    return result;
+  }
+
   lists: any[] = [{
     id: 1,
     name: '待办',
+    desc: 'todo',
     tasks: [
       {
         id: 1,
@@ -78,6 +96,7 @@ export class TaskHomeComponent implements OnInit {
   {
     id: 2,
     name: '进行中',
+    desc: 'doing',
     tasks: [
       {
         id: 3,
@@ -114,6 +133,24 @@ export class TaskHomeComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  onTaskDrop(event: CdkDragDrop<any[]>) {
+    console.log(event);
+
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
+    console.log(this.lists);
+    
+  }
+
+
+
   openNewTaskDialog(list) {
     this.dialog.open(NewTaskComponent, { data: 'this is my data' })
   }
@@ -131,5 +168,7 @@ export class TaskHomeComponent implements OnInit {
       console.log(res);
     })
   }
+
+
 
 }

@@ -10,7 +10,11 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
       <ng-content></ng-content>
     </mat-list>
   `,
-  styles: []
+  styles: [`
+  mat-list{
+    height:100px;
+  }
+  `]
 })
 export class TaskListComponent implements OnInit {
 

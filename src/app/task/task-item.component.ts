@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input, HostListener, HostBinding } from '@angular/core';
 import { taskItemAnimation } from 'src/animations/taskItem.animation';
 
 @Component({
@@ -11,7 +11,7 @@ import { taskItemAnimation } from 'src/animations/taskItem.animation';
     'priority-important': item.priority === 2,
     'priority-emergency': item.priority === 1}"
   [@taskItem]="_hover"
-  cdkDrag
+  
  >
   <mat-checkbox
   class="status"
