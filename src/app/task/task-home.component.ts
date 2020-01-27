@@ -127,12 +127,10 @@ export class TaskHomeComponent implements OnInit {
 
   // @HostBinding('@routeAnim') state;
 
-
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
   }
-
 
   onTaskDrop(event: CdkDragDrop<any[]>) {
     console.log(event);
@@ -145,11 +143,10 @@ export class TaskHomeComponent implements OnInit {
         event.previousIndex,
         event.currentIndex);
     }
+
     console.log(this.lists);
     
   }
-
-
 
   openNewTaskDialog(list) {
     this.dialog.open(NewTaskComponent, { data: 'this is my data' })
