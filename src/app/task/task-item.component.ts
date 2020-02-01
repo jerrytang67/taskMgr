@@ -4,6 +4,7 @@ import { taskItemAnimation } from 'src/animations/taskItem.animation';
 @Component({
   selector: 'app-task-item',
   template: `
+<ng-content></ng-content>
 <mat-list-item
  class="container"
  [ngClass]="{
@@ -25,7 +26,9 @@ import { taskItemAnimation } from 'src/animations/taskItem.animation';
     <mat-icon *ngIf="item.reminder" class="alarm">alarm</mat-icon>
   </div>
   <mat-icon [svgIcon]="item.owner.avatar"  md-list-avatar class="avatar"></mat-icon>
+
 </mat-list-item>
+
   `,
   styles: [`
 mat-icon.avatar {
@@ -114,8 +117,7 @@ mat-icon.avatar {
 :host {
   width: 100%;
 }
-
-  `],
+`],
   animations: [taskItemAnimation]
 })
 export class TaskItemComponent implements OnInit {

@@ -20,7 +20,10 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
     <div class="task-item-container" cdkDropList [id]="item.desc" 
     [cdkDropListData]="item.tasks" 
     [cdkDropListConnectedTo]="listIds" (cdkDropListDropped)="onTaskDrop($event)">
-      <app-task-item *ngFor="let task of item.tasks" [item]="task" cdkDrag [cdkDragData]="task"></app-task-item>
+      
+      <app-task-item *ngFor="let task of item.tasks" [item]="task" cdkDrag [cdkDragData]="task">
+      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+      </app-task-item>
     </div>
 
   </app-task-list>
@@ -38,7 +41,6 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 }
 .task-item-container{
   min-height:100%;
-  background:#ff0;
 }
 .task-lists{
   min-width:100%;
@@ -53,6 +55,8 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   overflow-y:scroll;
   overflow-x:hidden;
 }
+
+
   `],
   animations: [slideToRight]
 })
@@ -145,24 +149,24 @@ export class TaskHomeComponent implements OnInit {
     }
 
     console.log(this.lists);
-    
+
   }
 
   openNewTaskDialog(list) {
-    this.dialog.open(NewTaskComponent, { data: 'this is my data' })
+    this.dialog.open(NewTaskComponent, { data: 'this is my data' });
   }
 
   openMoveTaskDialog(list) {
-    const dialogRef = this.dialog.open(MoveTaskComponent, { data: this.lists })
+    const dialogRef = this.dialog.open(MoveTaskComponent, { data: this.lists });
     dialogRef.afterClosed().subscribe(res => {
       console.log(res);
-    })
+    });
   }
 
   openRenameTaskDialog(list) {
-    const dialogRef = this.dialog.open(RenameTaskComponent, { data: this.lists })
+    const dialogRef = this.dialog.open(RenameTaskComponent, { data: this.lists });
     dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
+      console.log(res)
     })
   }
 
